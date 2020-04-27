@@ -8,5 +8,5 @@
         android:id="@+id/ivPoster"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/mm" />
 </LinearLayout>

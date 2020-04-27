@@ -3,16 +3,18 @@ package com.example.gridviewtest;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Context;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+
 import android.widget.BaseAdapter;
-import android.widget.GridLayout;
+
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,21 +22,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("영화포스터");
+
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.mm);
+
+        setTitle("영화포스터 v1.0");
         GridView gv = (GridView)findViewById(R.id.GridView01);
         MyGridAdapter gridAdapter = new MyGridAdapter(this);
         gv.setAdapter(new MyGridAdapter(this));
 
-        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 //                Toast.makeText(GridViewTest.this,""+position,
 //                        Toast.LENGTH_LONG).show();
-            }
-        });
+//            }
+//        });
+
+
+
 
     }
+
     public class MyGridAdapter extends BaseAdapter{
         private Context context;
         public MyGridAdapter(Context c){
@@ -89,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.mov61
         };
 
+        String[] posterTitle ={"써니","완득이","괴물","라디오스타","비열한거리","왕의남자","아일랜드","웰컴투동막골",
+                "헬보이","빽투더퓨처","써니","완득이","괴물","라디오스타","비열한거리","왕의남자","아일랜드","웰컴투동막골",
+                "써니","완득이","괴물","라디오스타","비열한거리","왕의남자","아일랜드","웰컴투동막골",
+                "써니","완득이","괴물","라디오스타","비열한거리","왕의남자","아일랜드","웰컴투동막골",
+                "써니","완득이","괴물","라디오스타","비열한거리","왕의남자","아일랜드","웰컴투동막골",
+                "써니","완득이","괴물","라디오스타","비열한거리","왕의남자","아일랜드","웰컴투동막골",
+                "웰컴투동막골"};
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -102,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 imageView=(ImageView)convertView;
             }
+
             imageView.setImageResource(posterID[position]);
             final int pos = position;
             imageView.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
                     ImageView ivPoster = (ImageView)dialogueView.findViewById(R.id.ivPoster);
                     ivPoster.setImageResource(posterID[pos]);
-                    dlg.setTitle("영화포스터");
-                    dlg.setIcon(R.mipmap.ic_launcher_round);
+                    dlg.setTitle(posterTitle[pos]);
+                    dlg.setIcon(R.drawable.mm);
                     dlg.setView(dialogueView);
                     dlg.setNegativeButton("닫기", null);
                     dlg.show();
